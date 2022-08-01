@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class ButtonForTest extends StatefulWidget {
+class ButtonForTest extends StatelessWidget {
   final Function click;
   final Color cor;
   final Color disableColor;
@@ -18,20 +18,15 @@ class ButtonForTest extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<ButtonForTest> createState() => _ButtonForTestState();
-}
-
-class _ButtonForTestState extends State<ButtonForTest> {
-  @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       key: Key('findElevatedButton'),
-      onPressed: widget.click(),
-      child: Text(widget.label),
+      onPressed: click(),
+      child: Text(label),
       style: ButtonStyle(
-          backgroundColor: widget.value == true
-              ? MaterialStateProperty.all(widget.cor)
-              : MaterialStateProperty.all(widget.disableColor)),
+          backgroundColor: value
+              ? MaterialStateProperty.all(cor)
+              : MaterialStateProperty.all(disableColor)),
     );
   }
 }
